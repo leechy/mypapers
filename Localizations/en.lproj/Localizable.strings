@@ -8,3 +8,36 @@
 
 /* Item detail view */
 "item_detail" = "Item: %@";
+
+/* Categories section */
+"categories" = "Categories";
+
+/* Add category */
+"add_category" = "Add Category";
+
+/* Category label */
+"category_label" = "Category Name:";
+
+/* Select a category */
+"select_a_category" = "Select a category";
+
+/* Cancel */
+"cancel" = "Cancel";
+
+/* Add */
+"add" = "Add";
+
+/* System categories */
+"Medical" = "Medical";
+"Household" = "Household";
+"Education" = "Education";
+"Sport" = "Sport";
+"Vehicle" = "Vehicle";
+"Plastic Cards" = "Plastic Cards";
+"Communication" = "Communication";
+"Income / Payslips" = "Income / Payslips";
+"Contracts" = "Contracts";
+"Taxes" = "Taxes";
+"Work" = "Work";
+"IDs and Passports" = "IDs and Passports";
+"Other" = "Other";

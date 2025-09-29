@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		DAABF4112E8A7DF6008C805C /* mypapers */ = {
+		DA75A5862E8AAC6D00D859A3 /* mypapers */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = mypapers;
 			sourceTree = "<group>";
@@ -85,9 +85,9 @@
 		DAABF4062E8A7DF6008C805C = {
 			isa = PBXGroup;
 			children = (
+				DA75A5862E8AAC6D00D859A3 /* mypapers */,
 				DAABF4422E8A97CF008C805C /* Models */,
 				DAABF4412E8A97C2008C805C /* Localizations */,
-				DAABF4112E8A7DF6008C805C /* mypapers */,
 				DAABF4212E8A7DF8008C805C /* mypapersTests */,
 				DAABF42B2E8A7DF8008C805C /* mypapersUITests */,
 				DAABF4102E8A7DF6008C805C /* Products */,
@@ -120,7 +120,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				DAABF4112E8A7DF6008C805C /* mypapers */,
+				DA75A5862E8AAC6D00D859A3 /* mypapers */,
 				DAABF4412E8A97C2008C805C /* Localizations */,
 				DAABF4422E8A97CF008C805C /* Models */,
 			);

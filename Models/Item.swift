@@ -12,10 +12,12 @@ import SwiftData
 final class Item {
     var timestamp: Date
     var localizedTitles: [String: String] // key: language code (e.g., "en", "es"), value: title in that language
+    @Relationship var categories: [Category] = []
     
-    init(timestamp: Date, localizedTitles: [String: String] = [:]) {
+    init(timestamp: Date, localizedTitles: [String: String] = [:], categories: [Category] = []) {
         self.timestamp = timestamp
         self.localizedTitles = localizedTitles
+        self.categories = categories
     }
     
     var title: String {
