@@ -45,6 +45,16 @@
 			path = mypapersUITests;
 			sourceTree = "<group>";
 		};
+		DAABF4412E8A97C2008C805C /* Localizations */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Localizations;
+			sourceTree = "<group>";
+		};
+		DAABF4422E8A97CF008C805C /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +85,8 @@
 		DAABF4062E8A7DF6008C805C = {
 			isa = PBXGroup;
 			children = (
+				DAABF4422E8A97CF008C805C /* Models */,
+				DAABF4412E8A97C2008C805C /* Localizations */,
 				DAABF4112E8A7DF6008C805C /* mypapers */,
 				DAABF4212E8A7DF8008C805C /* mypapersTests */,
 				DAABF42B2E8A7DF8008C805C /* mypapersUITests */,
@@ -109,6 +121,8 @@
 			);
 			fileSystemSynchronizedGroups = (
 				DAABF4112E8A7DF6008C805C /* mypapers */,
+				DAABF4412E8A97C2008C805C /* Localizations */,
+				DAABF4422E8A97CF008C805C /* Models */,
 			);
 			name = mypapers;
 			packageProductDependencies = (
@@ -192,6 +206,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = DAABF4062E8A7DF6008C805C;
 			minimizedProjectReferenceProxies = 1;
@@ -274,6 +289,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -338,6 +354,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

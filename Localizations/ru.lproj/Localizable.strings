@@ -1,0 +1,10 @@
+/* Localizable.strings */
+
+/* Add Item button */
+"add_item" = "Добавь штуку";
+
+/* Select an item message */
+"select_an_item" = "Выбери штуку";
+
+/* Item detail view */
+"item_detail" = "Штука: %@";
