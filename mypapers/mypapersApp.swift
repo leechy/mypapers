@@ -14,6 +14,7 @@ struct mypapersApp: App {
         let schema = Schema([
             Item.self,
             Category.self,
+            Stack.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

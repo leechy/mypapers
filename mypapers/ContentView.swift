@@ -11,38 +11,36 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
-    @Query(sort: \Category.order) private var categories: [Category]
-    @State private var selectedCategory: Category?
+    @Query private var stacks: [Stack]
+    @State private var selectedStack: Stack?
     @State private var selectedItem: Item?
     @State private var showingAddCategory = false
     private let categoriesManager = CategoriesManager()
+    private let stacksManager = StacksManager()
 
     var body: some View {
         NavigationSplitView(sidebar: {
-            List(selection: $selectedCategory) {
-                Section("categories") {
-                    ForEach(categories) { category in
-                      Text(category.displayLabel)
+            List(selection: $selectedStack) {
+                Section("stacks") {
+                    ForEach(stacks) { stack in
+                        Label(stack.displayName, systemImage: stack.iconName)
                     }
-                    .onDelete(perform: { offsets in
-                      categoriesManager.deleteCategories(at: offsets, from: categories, modelContext: modelContext)
-                    })
-                    .onMove(perform: { source, dest in
-                      categoriesManager.moveCategories(from: source, to: dest, categories: categories)
-                    })
-                }
-                .sectionActions {
-                  Button("add_category", systemImage: "plus.circle") {
-                    showingAddCategory = true
-                  }
-                  .font(.title3)
+                    .onDelete(perform: { offsets in stacksManager.deleteStacks(at: offsets, from: stacks, modelContext: modelContext) })
+                    .onMove(perform: { source, dest in stacksManager.moveStacks(from: source, to: dest, stacks: stacks) })
                 }
             }
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
+            .toolbar {
+                ToolbarItem {
+                    Button(action: { showingAddCategory = true }) {
+                        Label("add_stack", systemImage: "plus")
+                    }
+                }
+            }
         }, content: {
-            if let selectedCategory = selectedCategory {
+            if let selectedStack = selectedStack {
                 List(selection: $selectedItem) {
-                    ForEach(items.filter { $0.categories.contains(where: { $0.id == selectedCategory.id }) }) { item in
+                    ForEach(items.filter { selectedStack.id == "all_papers" || selectedStack.papers.contains($0.id) }) { item in
                         NavigationLink(value: item) {
                             Text(item.title)
                         }
@@ -57,7 +55,7 @@ struct ContentView: View {
                     }
                 }
             } else {
-                Text("select_a_category")
+                Text("select_a_stack")
             }
         }, detail: {
             if let selectedItem = selectedItem {
@@ -67,22 +65,26 @@ struct ContentView: View {
             }
         })
         .sheet(isPresented: $showingAddCategory) {
-            AddCategoryView()
+            AddStackView()
         }
         .onAppear {
-            categoriesManager.insertSystemCategoriesIfNeeded(categories: categories, modelContext: modelContext)
+            categoriesManager.insertSystemCategoriesIfNeeded(categories: [], modelContext: modelContext) // Keep categories for now
+            stacksManager.insertSystemStacksIfNeeded(stacks: stacks, modelContext: modelContext)
         }
     }
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(timestamp: Date(), localizedTitles: ["en": "New Item"], categories: selectedCategory != nil ? [selectedCategory!] : [])
+            let newItem = Item(timestamp: Date(), localizedTitles: ["en": "New Item"], categories: [])
             modelContext.insert(newItem)
+            if let selectedStack = selectedStack, selectedStack.id != "all_papers" {
+                stacksManager.addPaperToStack(stack: selectedStack, paperId: newItem.id)
+            }
         }
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: [Item.self, Category.self], inMemory: true)
+        .modelContainer(for: [Item.self, Category.self, Stack.self], inMemory: true)
 }

@@ -27,17 +27,26 @@
 /* Add */
 "add" = "Add";
 
-/* System categories */
-"Medical" = "Medical";
-"Household" = "Household";
-"Education" = "Education";
-"Sport" = "Sport";
-"Vehicle" = "Vehicle";
-"Plastic Cards" = "Plastic Cards";
-"Communication" = "Communication";
-"Income / Payslips" = "Income / Payslips";
-"Contracts" = "Contracts";
-"Taxes" = "Taxes";
-"Work" = "Work";
-"IDs and Passports" = "IDs and Passports";
-"Other" = "Other";
+/* Stacks section */
+"stacks" = "Stacks";
+
+/* Add stack */
+"add_stack" = "Add Stack";
+
+/* Stack name */
+"stack_name" = "Stack Name";
+
+/* Stack type */
+"stack_type" = "Stack Type";
+
+/* Select a stack */
+"select_a_stack" = "Select a stack";
+
+/* All Papers */
+"All Papers" = "All Papers";
+
+/* Stack types */
+"Folder" = "Folder";
+"Project" = "Project";
+"Collection" = "Collection";
+"Trip" = "Trip";

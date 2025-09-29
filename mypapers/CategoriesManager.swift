@@ -17,13 +17,14 @@ class CategoriesManager {
             ("education", "Education"),
             ("sport", "Sport"),
             ("vehicle", "Vehicle"),
-            ("plastic_cards", "Plastic Cards"),
+            ("cards", "Plastic Cards"),
             ("communication", "Communication"),
-            ("income_payslips", "Income / Payslips"),
+            ("income", "Income / Payslips"),
             ("contracts", "Contracts"),
             ("taxes", "Taxes"),
             ("work", "Work"),
             ("ids_passports", "IDs and Passports"),
+            ("food", "Food"),
             ("other", "Other")
         ]
         

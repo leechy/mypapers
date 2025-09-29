@@ -10,11 +10,13 @@ import SwiftData
 
 @Model
 final class Item {
+    var id: String
     var timestamp: Date
     var localizedTitles: [String: String] // key: language code (e.g., "en", "es"), value: title in that language
     @Relationship var categories: [Category] = []
     
-    init(timestamp: Date, localizedTitles: [String: String] = [:], categories: [Category] = []) {
+    init(id: String = UUID().uuidString, timestamp: Date, localizedTitles: [String: String] = [:], categories: [Category] = []) {
+        self.id = id
         self.timestamp = timestamp
         self.localizedTitles = localizedTitles
         self.categories = categories
