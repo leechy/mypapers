@@ -43,7 +43,7 @@
 "select_a_stack" = "Select a stack";
 
 /* All Papers */
-"All Papers" = "All Papers";
+"all_papers" = "All Papers";
 
 /* Stack types */
 "Folder" = "Folder";

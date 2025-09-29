@@ -45,12 +45,13 @@ class CategoriesManager {
             }
         }
     }
-    
-    func moveCategories(from source: IndexSet, to destination: Int, categories: [Category]) {
-        var reordered = Array(categories)
-        reordered.move(fromOffsets: source, toOffset: destination)
-        for (index, category) in reordered.enumerated() {
-            category.order = index
-        }
+
+  func moveCategories(from source: IndexSet, to destination: Int, categories: [Category]) {
+    var reordered = Array(categories)
+    reordered.move(fromOffsets: source, toOffset: destination)
+
+    for (index, category) in reordered.enumerated() {
+      category.order = index
     }
+  }
 }
