@@ -15,6 +15,12 @@
 /* Add category */
 "add_category" = "Add Category";
 
+/* New Category */
+"new_category" = "New Category";
+
+/* New Category description */
+"new_category_description" = "Enter the name of the new custom category. You can assign multiple categories to every paper.";
+
 /* Category label */
 "category_label" = "Category Name:";
 
@@ -33,11 +39,17 @@
 /* Add stack */
 "add_stack" = "Add Stack";
 
+/* New Stack */
+"new_stack" = "New Stack";
+
+/* New Stack description */
+"new_stack_description" = "Enter a name for the new Papers Stack, where you can keep some of your papers together.";
+
 /* Stack name */
-"stack_name" = "Stack Name";
+"stack_name_label" = "Stack Name:";
 
 /* Stack type */
-"stack_type" = "Stack Type";
+"stack_type_label" = "Stack Type:";
 
 /* Select a stack */
 "select_a_stack" = "Select a stack";
@@ -46,7 +58,7 @@
 "all_papers" = "All Papers";
 
 /* Stack types */
-"Folder" = "Folder";
 "Project" = "Project";
 "Collection" = "Collection";
 "Trip" = "Trip";
+"Folder" = "Folder";

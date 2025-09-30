@@ -12,7 +12,7 @@ struct AddStackView: View {
   @Environment(\.modelContext) private var modelContext
   @Environment(\.dismiss) private var dismiss
   @Query(sort: \Stack.order) private var stacks: [Stack]
-    
+
   @State private var name = ""
   @State private var selectedType: StackType = .folder
     
@@ -22,9 +22,27 @@ struct AddStackView: View {
         VStack(alignment: .leading) {
           Grid {
             GridRow {
-              Text("stack_type")
+              Image("MyPapers Icon")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 64, height: 64)
                 .gridColumnAlignment(.trailing)
-              Picker("stack_type", selection: $selectedType) {
+              
+              VStack(alignment: .leading, spacing: 8) {
+                Text("new_stack")
+                  .font(.headline)
+                Text("new_stack_description")
+                  .font(.subheadline)
+                  .multilineTextAlignment(.leading)
+              }
+            }
+            .padding(.bottom, 12)
+
+            GridRow {
+              Text("stack_type_label")
+                .font(.caption)
+                .gridColumnAlignment(.trailing)
+              Picker("stack_type_label", selection: $selectedType) {
                 ForEach([StackType.folder, .project, .collection, .trip], id: \.self) { type in
                   Label(type.displayName, systemImage: type.iconName).tag(type)
                 }
@@ -34,9 +52,10 @@ struct AddStackView: View {
             }
             
             GridRow {
-              Text("stack_name")
+              Text("stack_name_label")
+                .font(.caption)
                 .gridColumnAlignment(.trailing)
-              TextField("stack_name", text: $name)
+              TextField("stack_name_label", text: $name)
                 .labelsHidden()
                 .gridColumnAlignment(.leading)
                 .onSubmit {
@@ -44,6 +63,8 @@ struct AddStackView: View {
                 }
             }
           }
+          .padding(.trailing, 4)
+          .padding(.bottom, 4)
           
           HStack {
             Spacer()
@@ -65,13 +86,13 @@ struct AddStackView: View {
             }
             .disabled(name.isEmpty)
           }
+          .padding(4)
         }
       }
-      .navigationTitle("add_stack")
       .padding()
+      
     }
     .frame(maxWidth: 400)
-    .toolbarTitleDisplayMode(.inline)
   }
     
   private func addStack() {
