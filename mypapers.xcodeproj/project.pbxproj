@@ -30,11 +30,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		DA75A5862E8AAC6D00D859A3 /* mypapers */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = mypapers;
-			sourceTree = "<group>";
-		};
 		DAABF4212E8A7DF8008C805C /* mypapersTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = mypapersTests;
@@ -58,6 +53,11 @@
 		DAB53BE72E8BF0CB008F6BBA /* Controllers */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DAF09E5F2E8C20820039785F /* mypapers */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = mypapers;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -90,8 +90,8 @@
 		DAABF4062E8A7DF6008C805C = {
 			isa = PBXGroup;
 			children = (
+				DAF09E5F2E8C20820039785F /* mypapers */,
 				DAB53BE72E8BF0CB008F6BBA /* Controllers */,
-				DA75A5862E8AAC6D00D859A3 /* mypapers */,
 				DAABF4422E8A97CF008C805C /* Models */,
 				DAABF4412E8A97C2008C805C /* Localizations */,
 				DAABF4212E8A7DF8008C805C /* mypapersTests */,
@@ -126,10 +126,10 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				DA75A5862E8AAC6D00D859A3 /* mypapers */,
 				DAABF4412E8A97C2008C805C /* Localizations */,
 				DAABF4422E8A97CF008C805C /* Models */,
 				DAB53BE72E8BF0CB008F6BBA /* Controllers */,
+				DAF09E5F2E8C20820039785F /* mypapers */,
 			);
 			name = mypapers;
 			packageProductDependencies = (

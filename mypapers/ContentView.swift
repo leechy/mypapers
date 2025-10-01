@@ -12,120 +12,67 @@ struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
   @Query private var items: [Item]
 
-  private let categoriesManager = CategoriesManager()
-  private let stacksManager = StacksManager()
-
-  @Query(sort: \Stack.order) private var stacks: [Stack]
-  @State private var selectedStack: Stack? = nil
-
-  @Query(sort: \Category.order) private var categories: [Category]
-  @State private var selectedCategory: Category? = nil
-
-  @State private var showingAddStack = false
-  @State private var showingAddCategory = false
+  @State var showingAddStack = false
+  @State var showingAddCategory = false
+  @State private var drawerSelection: String? = "dashboard"
 
   var body: some View {
     NavigationSplitView(sidebar: {
-      List(selection: $selectedStack) {
-        Label(String(format: NSLocalizedString("all_papers", comment: "")), systemImage: "rectangle.grid.2x2")
-
-        Section("stacks") {
-          ForEach(stacks) { stack in
-            Label(stack.name, systemImage: stack.iconName)
-          }
-          .onDelete(perform: { offsets in
-            stacksManager.deleteStacks(
-              at: offsets,
-              from: stacks,
-              modelContext: modelContext
-            )
-          })
-          .onMove(perform: { source, dest in
-            stacksManager.moveStacks(
-              from: source,
-              to: dest,
-              stacks: stacks
-            )
-          })
+      List(selection: $drawerSelection) {
+        NavigationLink(value: "dashboard") {
+          Label(String(format: NSLocalizedString("dashboard", comment: "")), systemImage: "rectangle.3.group")
         }
-        .sectionActions {
-          Button(action: { showingAddStack = true }) {
-            Label("add_stack", systemImage: "plus.circle")
-              .font(.title3)
-          }
+        NavigationLink(value: "all_papers") {
+          Label(String(format: NSLocalizedString("all_papers", comment: "")), systemImage: "rectangle.grid.2x2")
         }
-
-        Section("categories") {
-          ForEach(categories) { category in
-            Label(category.displayLabel, systemImage: "folder")
-          }
-          .onDelete(perform: { offsets in
-            categoriesManager.deleteCategories(
-              at: offsets, from: stacks as! [Category],
-              modelContext: modelContext
-            )
-          })
-          .onMove(perform: { source, dest in
-            categoriesManager.moveCategories(
-              from: source,
-              to: dest,
-              categories: categories
-            )
-          })
+        NavigationLink(value: "contacts") {
+          Label(String(format: NSLocalizedString("contacts", comment: "")), systemImage: "person.2")
         }
-        .sectionActions {
-          Button(action: { showingAddCategory = true }) {
-            Label("add_category", systemImage: "plus.circle")
-              .font(.title3)
-
-          }
-        }
+        StacksListView(
+          showingAddStack: $showingAddStack
+        )
+        CategoriesListView(
+          showingAddCategory: $showingAddCategory
+        )
       }
-      .navigationSplitViewColumnWidth(min: 180, ideal: 200)
+      .frame(maxHeight: .infinity)
+      .navigationSplitViewColumnWidth(min: 220, ideal: 280)
 
-    }, content: {
-      if selectedStack != nil {
-            List {
-              ForEach(items) { item in
-                NavigationLink(value: item) {
-                  Text(item.title)
-                }
-              }
-            }
-            .navigationSplitViewColumnWidth(min: 200, ideal: 300)
-            .toolbar {
-              ToolbarItem {
-                Button(action: addItem) {
-                  Label("add_item", systemImage: "plus")
-                }
-              }
-            }
-          } else {
-            Text("select_a_stack")
-          }
-        }, detail: {
-          Text("select_an_item")
-        })
-        .sheet(isPresented: $showingAddStack) {
-          AddStackView()
+    }, detail: {
+      if let selection = drawerSelection {
+        switch selection {
+        case "dashboard":
+          DashboardScreen()
+        case "all_papers":
+          PapersScreen()
+        case "contacts":
+          ContactsScreen()
+        case _ where selection.hasPrefix("stack_"):
+          PapersScreen()
+        case _ where selection.hasPrefix("category_"):
+          PapersScreen()
+        default:
+          Text("Unknown destination: \(selection)")
         }
-        .sheet(isPresented: $showingAddCategory) {
-          AddCategoryView()
-        }
-        .onAppear {
-            categoriesManager.insertSystemCategoriesIfNeeded(categories: [], modelContext: modelContext) // Keep categories for now
-        }
+      } else {
+        Text("select_an_item")
+      }
+    })
+    .sheet(isPresented: $showingAddCategory) {
+      AddCategoryView()
     }
+    .sheet(isPresented: $showingAddStack) {
+      AddStackView()
+    }
+  }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date(), localizedTitles: ["en": "New Item"], categories: [])
-            modelContext.insert(newItem)
-          if selectedStack != nil {
-            stacksManager.addPaperToStack(stack: selectedStack!, paperId: newItem.id)
-          }
-        }
+
+  private func addItem() {
+    withAnimation {
+      let newItem = Item(timestamp: Date(), localizedTitles: ["en": "New Item"], categories: [])
+      modelContext.insert(newItem)
     }
+  }
 }
 
 #Preview {
