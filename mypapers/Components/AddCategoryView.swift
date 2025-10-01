@@ -9,10 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct AddCategoryView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Category.order) private var categories: [Category]
+  @Environment(\.dismiss) private var dismiss
+  @Environment(\.modelContext) private var modelContext
+  @Query(sort: \Category.order) private var categories: [Category]
     
-    @State private var label = ""
+  @State private var label = ""
     
   var body: some View {
     Dialog(
@@ -31,9 +32,22 @@ struct AddCategoryView: View {
             }
         }
       },
-      actionText: "add",
-      actionDisabled: label.isEmpty,
-      onAction: addCategory
+      actions: {
+        DialogButton(
+          title: "cancel",
+          action: { dismiss() }
+        )
+        .keyboardShortcut(.cancelAction)
+        DialogButton(
+          title: "add",
+          action: {
+            addCategory()
+            dismiss()
+          }
+        )
+        .disabled(label.isEmpty)
+        .keyboardShortcut(.defaultAction)
+      }
     )
   }
     

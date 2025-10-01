@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct AddStackView: View {
+  @Environment(\.dismiss) private var dismiss
   @Environment(\.modelContext) private var modelContext
   @Query(sort: \Stack.order) private var stacks: [Stack]
 
@@ -25,7 +26,7 @@ struct AddStackView: View {
             .font(.caption)
             .gridColumnAlignment(.trailing)
           Picker("stack_type_label", selection: $selectedType) {
-            ForEach([StackType.folder, .project, .collection, .trip], id: \.self) { type in
+            ForEach([StackType.collection, .project, .trip, .folder], id: \.self) { type in
               Label(type.displayName, systemImage: type.iconName).tag(type)
             }
           }
@@ -45,9 +46,22 @@ struct AddStackView: View {
             }
         }
       },
-      actionText: "add",
-      actionDisabled: name.isEmpty,
-      onAction: addStack
+      actions: {
+        DialogButton(
+          title: "cancel",
+          action: { dismiss() }
+        )
+        .keyboardShortcut(.cancelAction)
+        DialogButton(
+          title: "add",
+          action: {
+            addStack()
+            dismiss()
+          }
+        )
+        .disabled(name.isEmpty)
+        .keyboardShortcut(.defaultAction)
+      }
     )
   }
     
