@@ -18,6 +18,15 @@ class StacksManager {
     }
   }
 
+  func deleteStack(_ stack: Stack, modelContext: ModelContext) {
+    modelContext.delete(stack)
+  }
+  
+  func renameStack(_ stack: Stack, to newName: String, modelContext: ModelContext) {
+    stack.name = newName
+    try? modelContext.save()
+  }
+
   func moveStacks(from source: IndexSet, to destination: Int, stacks: [Stack]) {
     var reordered = Array(stacks)
     reordered.move(fromOffsets: source, toOffset: destination)

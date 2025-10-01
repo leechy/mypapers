@@ -54,6 +54,12 @@
 /* Select a stack */
 "select_a_stack" = "Select a stack";
 
+/* Rename Stack */
+"rename_stack" = "Rename Stack";
+
+/* Delete Stack */
+"delete_stack" = "Delete Stack";
+
 /* All Papers */
 "all_papers" = "All Papers";
 
@@ -62,3 +68,12 @@
 "Collection" = "Collection";
 "Trip" = "Trip";
 "Folder" = "Folder";
+
+/* Dashboard */
+"dashboard" = "Dashboard";
+
+/* Contacts */
+"contacts" = "Contacts";
+
+/* Account Settings */
+"account_settings" = "Account Settings";

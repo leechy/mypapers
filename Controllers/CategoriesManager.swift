@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 class CategoriesManager {
-    
+  
     func insertSystemCategoriesIfNeeded(categories: [Category], modelContext: ModelContext) {
         let systemCategories = [
             ("medical", "Medical"),
@@ -36,15 +36,24 @@ class CategoriesManager {
         }
     }
     
-    func deleteCategories(at offsets: IndexSet, from categories: [Category], modelContext: ModelContext) {
-        withAnimation {
-            for index in offsets {
-                if !categories[index].system {
-                    modelContext.delete(categories[index])
-                }
-            }
+  func deleteCategories(at offsets: IndexSet, from categories: [Category], modelContext: ModelContext) {
+    withAnimation {
+      for index in offsets {
+        if !categories[index].system {
+          modelContext.delete(categories[index])
         }
+      }
     }
+  }
+  
+  func deleteCategory(_ category: Category, modelContext: ModelContext) {
+    modelContext.delete(category)
+  }
+  
+  func renameCategory(_ category: Category, to newName: String, modelContext: ModelContext) {
+    category.label = newName
+    try? modelContext.save()
+  }
 
   func moveCategories(from source: IndexSet, to destination: Int, categories: [Category]) {
     var reordered = Array(categories)
