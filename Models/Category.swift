@@ -30,4 +30,8 @@ final class Category {
             return label
         }
     }
+
+  var prefixedID: String {
+    return "category_\(id)"
+  }
 }

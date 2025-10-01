@@ -27,4 +27,8 @@ final class Stack {
   var iconName: String {
     return type.iconName
   }
+  
+  var prefixedID: String {
+    return "stack_\(id)"
+  }
 }
