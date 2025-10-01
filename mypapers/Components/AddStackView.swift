@@ -14,7 +14,7 @@ struct AddStackView: View {
   @Query(sort: \Stack.order) private var stacks: [Stack]
 
   @State private var name = ""
-  @State private var selectedType: StackType = .folder
+  @State private var selectedType: StackType = .collection
     
   var body: some View {
     Dialog(
@@ -43,6 +43,7 @@ struct AddStackView: View {
             .gridColumnAlignment(.leading)
             .onSubmit {
               addStack()
+              dismiss()
             }
         }
       },

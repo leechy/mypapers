@@ -29,6 +29,7 @@ struct AddCategoryView: View {
             .gridColumnAlignment(.leading)
             .onSubmit {
               addCategory()
+              dismiss()
             }
         }
       },
