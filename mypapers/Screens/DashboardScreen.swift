@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct DashboardScreen: View {
-    var body: some View {
-      Text("Hello, you're looking at the Dashboard!")
-    }
+  var body: some View {
+    Text("Hello, you're looking at the Dashboard!")
+  }
 }
 
 #Preview {

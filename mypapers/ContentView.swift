@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  mypapers
 //
-//  Created by Andrey Lechev on 29/09/2025.
+//  Created by Andrey Lechev /2025.
 //
 
 import SwiftUI
@@ -14,7 +14,8 @@ struct ContentView: View {
 
   @State var showingAddStack = false
   @State var showingAddCategory = false
-  @State private var drawerSelection: String? = "dashboard"
+  @State private var drawerSelection: String? = "contacts"
+  @State private var selectedContactID: String?
 
   var body: some View {
     NavigationSplitView(sidebar: {
@@ -38,24 +39,35 @@ struct ContentView: View {
       .frame(maxHeight: .infinity)
       .navigationSplitViewColumnWidth(min: 220, ideal: 280)
 
-    }, detail: {
+    }, content: {
       if let selection = drawerSelection {
         switch selection {
         case "dashboard":
           DashboardScreen()
         case "all_papers":
-          PapersScreen()
+          PapersScreen(stack: nil, category: nil)
         case "contacts":
-          ContactsScreen()
+          ContactsScreen(selectedContactID: $selectedContactID)
         case _ where selection.hasPrefix("stack_"):
-          PapersScreen()
+          PapersScreen(stack: selection, category: nil)
         case _ where selection.hasPrefix("category_"):
-          PapersScreen()
+          PapersScreen(stack: nil, category: selection)
         default:
-          Text("Unknown destination: \(selection)")
+          Text("Unknown selection")
         }
+      }
+    }, detail: {
+      if drawerSelection == "contacts" && selectedContactID != nil {
+        // Placeholder for contact detail view
+        VStack {
+          Text("Contact Details")
+            .font(.title)
+          // Add more details here
+          Spacer()
+        }
+        .padding()
       } else {
-        Text("select_an_item")
+        EmptyView()
       }
     })
     .sheet(isPresented: $showingAddCategory) {

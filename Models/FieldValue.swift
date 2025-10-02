@@ -11,4 +11,14 @@ struct FieldValue: Codable {
     var value: ValueType?
     var label: String?
     var currency: String?
+    
+    var stringValue: String? {
+        switch value {
+        case .string(let s): return s
+        case .bool(let b): return b.description
+        case .number(let n): return String(n)
+        case .null: return nil
+        case .none: return nil
+        }
+    }
 }

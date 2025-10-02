@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Contact {
+class Contact: Identifiable {
     @Attribute(.unique) var id: String
     var names: FieldValue
     var displayName: FieldValue?
