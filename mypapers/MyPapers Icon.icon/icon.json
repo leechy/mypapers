@@ -1,0 +1,178 @@
+{
+  "fill" : {
+    "solid" : "extended-srgb:1.00000,0.23137,0.18824,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "fill" : "automatic",
+          "image-name" : "Rectangle.svg",
+          "name" : "Rectangle",
+          "opacity" : 0.9,
+          "position" : {
+            "scale" : 3.8999999999999995,
+            "translation-in-points" : [
+              -30,
+              -35
+            ]
+          }
+        },
+        {
+          "fill" : "automatic",
+          "image-name" : "Rectangle.svg",
+          "name" : "Rectangle",
+          "opacity" : 0.5,
+          "position" : {
+            "scale" : 3.8999999999999995,
+            "translation-in-points" : [
+              -15,
+              -10
+            ]
+          }
+        },
+        {
+          "fill" : "automatic",
+          "image-name" : "Rectangle.svg",
+          "name" : "Rectangle",
+          "opacity" : 0.5,
+          "position" : {
+            "scale" : 3.8999999999999995,
+            "translation-in-points" : [
+              -10,
+              0
+            ]
+          }
+        },
+        {
+          "fill" : "automatic",
+          "image-name" : "Rectangle.svg",
+          "name" : "Rectangle",
+          "opacity" : 0.5,
+          "position" : {
+            "scale" : 3.8999999999999995,
+            "translation-in-points" : [
+              -5,
+              10
+            ]
+          }
+        },
+        {
+          "fill" : "automatic",
+          "image-name" : "Rectangle.svg",
+          "name" : "Rectangle",
+          "opacity" : 0.5,
+          "position" : {
+            "scale" : 3.8999999999999995,
+            "translation-in-points" : [
+              2,
+              20
+            ]
+          }
+        },
+        {
+          "fill" : "automatic",
+          "image-name" : "Rectangle.svg",
+          "name" : "Rectangle",
+          "opacity" : 0.5,
+          "position" : {
+            "scale" : 3.8999999999999995,
+            "translation-in-points" : [
+              9,
+              30
+            ]
+          }
+        },
+        {
+          "fill" : "automatic",
+          "image-name" : "Rectangle.svg",
+          "name" : "Rectangle",
+          "opacity" : 0.5,
+          "position" : {
+            "scale" : 3.8999999999999995,
+            "translation-in-points" : [
+              16,
+              38
+            ]
+          }
+        },
+        {
+          "blend-mode" : "normal",
+          "fill" : "none",
+          "glass" : true,
+          "hidden" : true,
+          "image-name" : "Rectangle Copy 14 2.svg",
+          "name" : "Rectangle Copy 14 2",
+          "opacity" : 0.6,
+          "position" : {
+            "scale" : 3.5,
+            "translation-in-points" : [
+              16.8125,
+              -2.390625
+            ]
+          }
+        },
+        {
+          "hidden" : true,
+          "image-name" : "Rectangle Copy 18 2.svg",
+          "name" : "Rectangle Copy 18 2",
+          "opacity" : 0.6,
+          "position" : {
+            "scale" : 3.3,
+            "translation-in-points" : [
+              7.5,
+              -9.515625
+            ]
+          }
+        },
+        {
+          "hidden" : true,
+          "image-name" : "Rectangle 2.svg",
+          "name" : "Rectangle 2",
+          "opacity" : 0.4,
+          "position" : {
+            "scale" : 3.3,
+            "translation-in-points" : [
+              10.59375,
+              9.8125
+            ]
+          }
+        },
+        {
+          "hidden" : true,
+          "image-name" : "Rectangle Copy 29 2.svg",
+          "name" : "Rectangle Copy 29 2",
+          "opacity" : 0.3,
+          "position" : {
+            "scale" : 3.2,
+            "translation-in-points" : [
+              -3.265625,
+              -9.296875
+            ]
+          }
+        }
+      ],
+      "position" : {
+        "scale" : 1.1,
+        "translation-in-points" : [
+          0,
+          0
+        ]
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}
