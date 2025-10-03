@@ -15,51 +15,19 @@ struct ContactsScreen: View {
   
   let manager = ContactsManager()
     
-    var body: some View {
-      if contacts.isEmpty {
-        ContentUnavailableView {
-          Label("No Contacts found", systemImage: "person.fill.questionmark")
-        } description: {
-          Text("Fill your contacts list using:")
-        } actions: {
-          Button("Mock contacts") {
-            manager.seedMockContacts(modelContext: modelContext)
-          }
+  var body: some View {
+    TabView {
+      ContactsList(selectedContactID: $selectedContactID)
+        .tabItem {
+          Text("contacts")
         }
-        .onAppear {
-          // Seed mock data if no contacts
-          manager.seedMockContacts(modelContext: modelContext)
-        }
-      } else if selectedContactID != nil {
-            // Compact list when contact is selected (three-pane mode)
-            List(contacts, selection: $selectedContactID) { contact in
-                VStack(alignment: .leading) {
-                    Text(contact.names.stringValue ?? "Unknown")
-                        .font(.headline)
-                    if let email = contact.email?.first?.stringValue {
-                        Text(email)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
-                }
-            }
-            .navigationTitle("Contacts")
-        } else {
-            // Full table when no contact selected (two-pane mode)
-          Table(contacts, selection: $selectedContactID) {
-                TableColumn("Name") { contact in
-                    Text(contact.names.stringValue ?? "Unknown")
-                }
-                TableColumn("Email") { contact in
-                    Text(contact.email?.first?.stringValue ?? "")
-                }
-                TableColumn("Phone") { contact in
-                    Text(contact.phone?.first?.stringValue ?? "")
-                }
-            }
-            .navigationTitle("Contacts")
+      Text("Contact Details Content")
+        .tabItem {
+          Text("Contact Details")
         }
     }
+    .tabViewStyle(.grouped)
+  }
 }
 
 #Preview {

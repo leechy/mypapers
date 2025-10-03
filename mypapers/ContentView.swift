@@ -39,7 +39,7 @@ struct ContentView: View {
       .frame(maxHeight: .infinity)
       .navigationSplitViewColumnWidth(min: 220, ideal: 280)
 
-    }, content: {
+    }, detail: {
       if let selection = drawerSelection {
         switch selection {
         case "dashboard":
@@ -56,20 +56,22 @@ struct ContentView: View {
           Text("Unknown selection")
         }
       }
-    }, detail: {
-      if drawerSelection == "contacts" && selectedContactID != nil {
-        // Placeholder for contact detail view
-        VStack {
-          Text("Contact Details")
-            .font(.title)
-          // Add more details here
-          Spacer()
-        }
-        .padding()
-      } else {
-        EmptyView()
-      }
-    })
+    }
+//                        , detail: {
+//      if drawerSelection == "contacts" && selectedContactID != nil {
+//        // Placeholder for contact detail view
+//        VStack {
+//          Text("Contact Details")
+//            .font(.title)
+//          // Add more details here
+//          Spacer()
+//        }
+//        .padding()
+//      } else {
+//        EmptyView()
+//      }
+//    }
+    )
     .sheet(isPresented: $showingAddCategory) {
       AddCategoryView()
     }
